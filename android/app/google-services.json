@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "551342426202",
+    "firebase_url": "https://umit-9bbcc.firebaseio.com",
+    "project_id": "umit-9bbcc",
+    "storage_bucket": "umit-9bbcc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551342426202:android:70270dcc16f0d69b8e3063",
+        "android_client_info": {
+          "package_name": "com.codeunion.umit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551342426202-tvvuo08vopnppnjdpoce3dmf6obiotne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw1KImZ2KD8NzRI9Z8V42TAUBwLGtZVcQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551342426202-tvvuo08vopnppnjdpoce3dmf6obiotne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

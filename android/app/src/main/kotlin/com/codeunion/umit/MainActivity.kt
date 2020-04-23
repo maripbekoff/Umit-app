@@ -1,4 +1,4 @@
-package com.example.umit
+package com.codeunion.umit
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
