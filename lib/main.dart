@@ -26,6 +26,11 @@ class MyApp extends StatelessWidget {
           userRepository: userRepository,
         ),
       ),
+      theme: ThemeData(
+        fontFamily: "Gilroy",
+        accentColor: Color(0xFF0097FF),
+        scaffoldBackgroundColor: Colors.white,
+      ),
     );
   }
 }

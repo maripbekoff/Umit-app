@@ -30,56 +30,126 @@ class HomePage extends StatelessWidget {
 
   HomePage({@required this.user, @required this.userRepository});
 
+  int _index = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text("1"),
+    Text("2"),
+    Text("3"),
+    Text("4"),
+  ];
+
   @override
   Widget build(BuildContext context) {
+    void _onItemTapped(int index) {
+      setState(() {
+        _index = index;
+      });
+    }
+
     homePageBloc = BlocProvider.of<HomePageBloc>(context);
     return WillPopScope(
       onWillPop: () async => false,
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text("email"),
-          centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.close,
-                color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            automaticallyImplyLeading: false,
+            leading: IconButton(
+              padding: EdgeInsets.zero,
+              icon: Icon(Icons.dehaze),
+              iconSize: 40,
+              color: Colors.black,
+              onPressed: () {},
+            ),
+            actions: <Widget>[
+              GestureDetector(
+                onTap: () {},
+                child: Container(
+                  width: 45,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: Theme.of(context).accentColor,
+                      width: 3,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(3),
+                    child: CircleAvatar(
+                      child: Icon(
+                        Icons.person,
+                        size: 32,
+                        color: Colors.white,
+                      ),
+                      backgroundColor: Colors.black26,
+                    ),
+                  ),
+                ),
               ),
-              onPressed: () {
-                homePageBloc.add(LogOutButtonPressedEvent());
-              },
-            ),
-          ],
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Text(user.email),
-            ),
-            BlocListener<HomePageBloc, HomePageState>(
-              listener: (context, state) {
-                if (state is LogOutSuccess) {
-                  navigateToLogInPage(context);
-                }
-              },
-              child: BlocBuilder<HomePageBloc, HomePageState>(
-                builder: (context, state) {
-                  if (state is LogOutInitial) {
-                    return Container();
-                  } else if (state is LogOutSuccess) {
-                    return Container();
+              SizedBox(width: 10)
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _index,
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            backgroundColor: Colors.transparent,
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            selectedItemColor: Theme.of(context).accentColor,
+            unselectedItemColor: Colors.black26,
+            iconSize: 38,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite),
+                title: Text('Понравки'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.extension),
+                title: Text('Тестирование'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text('Главная'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                title: Text('Настройки'),
+              ),
+            ],
+          ),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.center,
+                child: Text(user.email),
+              ),
+              BlocListener<HomePageBloc, HomePageState>(
+                listener: (context, state) {
+                  if (state is LogOutSuccess) {
+                    navigateToLogInPage(context);
                   }
                 },
+                child: BlocBuilder<HomePageBloc, HomePageState>(
+                  builder: (context, state) {
+                    if (state is LogOutInitial) {
+                      return Container();
+                    } else if (state is LogOutSuccess) {
+                      return Container();
+                    }
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
+
   void navigateToLogInPage(BuildContext context) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return LoginPageParent(userRepository: userRepository);
