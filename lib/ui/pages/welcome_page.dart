@@ -4,8 +4,11 @@ import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/ui/pages/login_page.dart';
 
 class WelcomePage extends StatefulWidget {
+  UserRepository userRepository = UserRepository();
+
   @override
-  _WelcomePageState createState() => _WelcomePageState();
+  _WelcomePageState createState() =>
+      _WelcomePageState(userRepository: userRepository);
 }
 
 class _WelcomePageState extends State<WelcomePage> {

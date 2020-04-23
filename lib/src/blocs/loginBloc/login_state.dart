@@ -6,14 +6,12 @@ abstract class LoginState extends Equatable{}
 
 class LoginInitialState extends LoginState {
   @override
-  // TODO: implement props
   List<Object> get props => null;
 
 }
 
 class LoginLoadingState extends LoginState{
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }
 
@@ -24,7 +22,6 @@ class LoginSuccessState extends LoginState{
   LoginSuccessState({@required this.user});
 
   @override
-  // TODO: implement props
   List<Object> get props => null;
 
 }
@@ -36,6 +33,5 @@ class LoginFailureState extends LoginState{
   LoginFailureState({@required this.message});
 
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }

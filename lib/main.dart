@@ -48,7 +48,7 @@ class App extends StatelessWidget {
             break;
           default:
             if (!snapshot.hasError) {
-              if (snapshot.data.getBool('isFirstLaunch')) {
+              if (snapshot.data.getBool('isFirstLaunch') != null) {
                 saveIsFirstLaunch(false);
                 return WelcomePage();
               } else {
