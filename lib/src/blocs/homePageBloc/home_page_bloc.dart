@@ -12,7 +12,6 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   }
 
   @override
-  // TODO: implement initialState
   HomePageState get initialState => LogOutInitial();
 
   @override

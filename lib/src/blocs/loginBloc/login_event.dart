@@ -10,7 +10,6 @@ class LoginButtonPressedEvent extends LoginEvent {
   LoginButtonPressedEvent({@required this.email, @required this.password});
 
   @override
-  // TODO: implement props
   List<Object> get props => null;
   
 }

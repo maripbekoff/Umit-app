@@ -6,7 +6,6 @@ abstract class AuthState extends Equatable {}
 
 class AuthInitialState extends AuthState {
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }
 
@@ -17,12 +16,10 @@ class AuthenticatedState extends AuthState {
   AuthenticatedState({@required this.user});
 
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }
 
 class UnAuthenticatedState extends AuthState {
   @override
-  // TODO: implement props
   List<Object> get props => null;
 }
