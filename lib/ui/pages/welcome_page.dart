@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:umit/repositories/user_repository.dart';
-import 'package:umit/ui/pages/home_page.dart';
 import 'package:umit/ui/pages/login_page.dart';
 
 class WelcomePage extends StatefulWidget {
