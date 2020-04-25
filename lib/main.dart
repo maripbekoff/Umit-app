@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/authBloc/auth_bloc.dart';
 import 'package:umit/src/blocs/authBloc/auth_event.dart';
@@ -26,6 +25,11 @@ class MyApp extends StatelessWidget {
           userRepository: userRepository,
         ),
       ),
+      theme: ThemeData(
+        fontFamily: "Gilroy",
+        accentColor: Color(0xFF0097FF),
+        scaffoldBackgroundColor: Colors.white,
+      ),
     );
   }
 }
@@ -38,9 +42,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: SharedPreferences.getInstance(),
-      builder:
-          (BuildContext context, AsyncSnapshot<SharedPreferences> snapshot) {
+      future: readIsFirstLaunch(),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
           case ConnectionState.waiting:
@@ -48,7 +51,7 @@ class App extends StatelessWidget {
             break;
           default:
             if (!snapshot.hasError) {
-              if (snapshot.data.getBool('isFirstLaunch')) {
+              if (isFirstLaunch) {
                 saveIsFirstLaunch(false);
                 return WelcomePage();
               } else {

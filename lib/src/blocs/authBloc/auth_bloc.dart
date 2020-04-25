@@ -11,7 +11,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   @override
-  // TODO: implement initialState
   AuthState get initialState => AuthInitialState();
 
   @override

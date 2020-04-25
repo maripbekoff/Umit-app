@@ -19,10 +19,9 @@ class _WelcomePageState extends State<WelcomePage> {
   _WelcomePageState({@required this.userRepository});
 
   Widget _buildImage(String assetName) {
-    return Align(
-      child:
-          Image.asset('assets/img/welcome_page/$assetName.jpg', width: 350.0),
-      alignment: Alignment.bottomCenter,
+    return Image.asset(
+      'assets/img/welcome_page/$assetName.png',
+      fit: BoxFit.fill,
     );
   }
 
@@ -32,7 +31,7 @@ class _WelcomePageState extends State<WelcomePage> {
     const pageDecoration = const PageDecoration(
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
-      descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
+      contentPadding: EdgeInsets.only(top: 20),
       pageColor: Colors.white,
       imagePadding: EdgeInsets.zero,
     );
@@ -41,48 +40,41 @@ class _WelcomePageState extends State<WelcomePage> {
       key: introKey,
       pages: [
         PageViewModel(
-          title: "Fractional shares",
+          title: "Кто мы?",
           body:
-              "Instead of having to buy an entire share, invest any amount you want.",
-          image: _buildImage('nick vuychich'),
+              "Úmit - это первая адаптированная система обучения под особые потребности. Теперь образование стало более доступной и качественной. Úmit даст возможность получения образование слепым, невзрячим и даже тем, у кого есть нарушение опорно-двигательного аппрата.",
+          image: _buildImage('Nick Vuychich'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Learn as you go",
+          title: "Я буду проходить курсы?",
           body:
-              "Download the Stockpile app and master the market with our mini-lesson.",
-          image: _buildImage('steven hocking'),
+              "Úmit - это не площадка набитая курсами. Это целая система, которая упрощает и цифровизирует процессы обучения студентов и школьников, упрощает процесс заполнения расписания уроков, даёт преподавателям возможность видеть всю статистику по классам, а администрации статистику по персоналу.",
+          image: _buildImage('Steven Hocking'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Kids and teens",
+          title: "Делаем мир лучше",
           body:
-              "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-          image: _buildImage('kids with disabilities'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Title of last page",
-          bodyWidget: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.edit),
-              Text(" to edit a post", style: bodyStyle),
-            ],
-          ),
-          image: _buildImage('img1'),
+              "Теперь любой желающий получить хорошее образование, несмотря на, возможные отклонения, способен обучаться с остальными. Мы делаем их жизнь намного проще и улучшаем её. Давайте делать добро!",
+          image: _buildImage('Kids with disabilities'),
           decoration: pageDecoration,
         ),
       ],
-      onDone: () => LoginPageParent(userRepository: userRepository),
-      //onSkip: () => _onIntroEnd(context), // You can override onSkip callback
+      onDone: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  LoginPageParent(userRepository: userRepository))),
+      // TODO: Make a setup an app, when it firstly launched
+      // onSkip: () => PreliminarilySetup(),
       showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
-      skip: const Text('Skip'),
+      skip: const Text('Пропустить'),
       next: const Icon(Icons.arrow_forward),
-      done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
+      done: const Text('Завершить',
+          style: TextStyle(fontWeight: FontWeight.w600)),
       dotsDecorator: const DotsDecorator(
         size: Size(10.0, 10.0),
         color: Color(0xFFBDBDBD),

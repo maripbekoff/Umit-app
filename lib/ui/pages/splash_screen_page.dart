@@ -3,6 +3,6 @@ import 'package:flutter/material.dart';
 class SplashScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text('Welcome');
+    return Scaffold(backgroundColor: Colors.white,);
   }
 }
