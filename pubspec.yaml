@@ -45,9 +45,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/img/welcome_page/background.jpg
-    - assets/img/welcome_page/kids with disabilities.jpg
-    - assets/img/welcome_page/nick vuychich.jpg
-    - assets/img/welcome_page/steven hocking.jpg
+    - assets/img/welcome_page/Kids with disabilities.png
+    - assets/img/welcome_page/Nick Vuychich.png
+    - assets/img/welcome_page/Steven Hocking.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
