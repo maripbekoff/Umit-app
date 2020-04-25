@@ -1,5 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+bool isFirstLaunch = true;
+
 Future<SharedPreferences> saveIsFirstLaunch(bool isFirstLaunch) async {
   var prefs = await SharedPreferences.getInstance();
   String key = 'isFirstLaunch';
@@ -10,6 +12,6 @@ Future<SharedPreferences> saveIsFirstLaunch(bool isFirstLaunch) async {
 Future<bool> readIsFirstLaunch() async {
   var prefs = await SharedPreferences.getInstance();
   String key = 'isFirstLaunch';
-  bool isFirstLaunch = prefs.getBool(key);
+  isFirstLaunch = prefs.getBool(key);
   return isFirstLaunch;
 }

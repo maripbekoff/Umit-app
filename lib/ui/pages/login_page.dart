@@ -6,7 +6,7 @@ import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/loginBloc/login_bloc.dart';
 import 'package:umit/src/blocs/loginBloc/login_event.dart';
 import 'package:umit/src/blocs/loginBloc/login_state.dart';
-import 'package:umit/ui/pages/home_page.dart';
+import 'package:umit/ui/pages/main_page.dart';
 
 class LoginPageParent extends StatelessWidget {
   UserRepository userRepository;
@@ -119,7 +119,6 @@ class LogInPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  
                 ],
               ),
             ],
@@ -166,7 +165,7 @@ class LogInPage extends StatelessWidget {
 
   void navigateToHomeScreen(BuildContext context, FirebaseUser user) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return HomePageParent(user: user, userRepository: userRepository);
+      return MainPage();
     }));
   }
 }

@@ -1,52 +1,34 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
-import 'package:umit/repositories/user_repository.dart';
-import 'package:umit/src/blocs/homePageBloc/home_page_bloc.dart';
-import 'package:umit/src/blocs/homePageBloc/home_page_event.dart';
-import 'package:umit/src/blocs/homePageBloc/home_page_state.dart';
-import 'package:umit/ui/pages/login_page.dart';
+import 'package:umit/ui/pages/navigation/favorite_page.dart';
+import 'package:umit/ui/pages/navigation/home_page/home_page.dart';
+import 'package:umit/ui/pages/navigation/settings.page.dart';
+import 'package:umit/ui/pages/navigation/tests_page.dart';
 
-class HomePageParent extends StatelessWidget {
-  FirebaseUser user;
-  UserRepository userRepository;
-
-  HomePageParent({@required this.user, @required this.userRepository});
+class MainPage extends StatefulWidget {
+  MainPage({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomePageBloc(userRepository: userRepository),
-      child: HomePage(user: user, userRepository: userRepository),
-    );
-  }
+  _MainPageState createState() => _MainPageState();
 }
 
-class HomePage extends StatelessWidget {
-  FirebaseUser user;
-  HomePageBloc homePageBloc;
-  UserRepository userRepository;
+class _MainPageState extends State<MainPage> {
+  int _selectedIndex = 2;
 
-  HomePage({@required this.user, @required this.userRepository});
-
-  int _index = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    Text("1"),
-    Text("2"),
-    Text("3"),
-    Text("4"),
+    FavoritePage(),
+    TestsPage(),
+    HomePage(),
+    SettingsPage(),
   ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    void _onItemTapped(int index) {
-      setState(() {
-        _index = index;
-      });
-    }
-
-    homePageBloc = BlocProvider.of<HomePageBloc>(context);
     return WillPopScope(
       onWillPop: () async => false,
       child: SafeArea(
@@ -88,14 +70,15 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 10)
+              SizedBox(width: 8),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: _index,
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
             showSelectedLabels: false,
             showUnselectedLabels: false,
-            backgroundColor: Colors.transparent,
+            backgroundColor: Colors.white,
             type: BottomNavigationBarType.fixed,
             elevation: 0,
             selectedItemColor: Theme.of(context).accentColor,
@@ -120,39 +103,9 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                child: Text(user.email),
-              ),
-              BlocListener<HomePageBloc, HomePageState>(
-                listener: (context, state) {
-                  if (state is LogOutSuccess) {
-                    navigateToLogInPage(context);
-                  }
-                },
-                child: BlocBuilder<HomePageBloc, HomePageState>(
-                  builder: (context, state) {
-                    if (state is LogOutInitial) {
-                      return Container();
-                    } else if (state is LogOutSuccess) {
-                      return Container();
-                    }
-                  },
-                ),
-              ),
-            ],
-          ),
+          body: _widgetOptions.elementAt(_selectedIndex),
         ),
       ),
     );
-  }
-
-  void navigateToLogInPage(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return LoginPageParent(userRepository: userRepository);
-    }));
   }
 }
