@@ -29,6 +29,14 @@ class MyApp extends StatelessWidget {
         fontFamily: "Gilroy",
         accentColor: Color(0xFF0097FF),
         scaffoldBackgroundColor: Color(0xFFF7F7F7),
+        appBarTheme: AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+            size: 40,
+          ),
+        ),
       ),
     );
   }

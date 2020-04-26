@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:umit/ui/pages/navigation/favorite_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/home_page.dart';
-import 'package:umit/ui/pages/navigation/settings.page.dart';
+import 'package:umit/ui/pages/navigation/settings_page/settings.page.dart';
 import 'package:umit/ui/pages/navigation/tests_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -68,14 +68,12 @@ class _MainPageState extends State<MainPage> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
             leading: IconButton(
               padding: EdgeInsets.zero,
               icon: Icon(Icons.dehaze),
-              iconSize: 40,
               color: Colors.black,
+              iconSize: 40,
               onPressed: () {},
             ),
             actions: _actionHide(),

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page.dart';
 
 var settingsArray = [
-  ["Данные", Icons.insert_chart],
-  ["Уведомленя", Icons.notifications_none],
-  ["Адаптация", Icons.invert_colors],
-  ["Приватность", Icons.vpn_key],
-  ["Безопасность", Icons.security],
-  ["Выход", Icons.close],
+  ["Данные", Icons.insert_chart, null],
+  ["Уведомленя", Icons.notifications_none, null],
+  ["Адаптация", Icons.invert_colors, AdaptationPage()],
+  ["Приватность", Icons.vpn_key, null],
+  ["Безопасность", Icons.security, null],
+  ["Выход", Icons.close, null],
 ];
 
 class SettingsPage extends StatelessWidget {
@@ -39,7 +40,14 @@ class SettingsPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return FlatButton(
                     padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => settingsArray[index][2],
+                        ),
+                      );
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
