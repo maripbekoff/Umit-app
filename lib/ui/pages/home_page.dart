@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/homePageBloc/home_page_bloc.dart';
-import 'package:umit/src/blocs/homePageBloc/home_page_event.dart';
 import 'package:umit/src/blocs/homePageBloc/home_page_state.dart';
 import 'package:umit/ui/pages/login_page.dart';
+import 'package:umit/ui/pages/settings_page.dart';
 
 class HomePageParent extends StatelessWidget {
   FirebaseUser user;
@@ -31,20 +31,16 @@ class HomePage extends StatelessWidget {
   HomePage({@required this.user, @required this.userRepository});
 
   int _index = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
+  static List<Widget> _widgetOptions = <Widget>[
     Text("1"),
     Text("2"),
     Text("3"),
-    Text("4"),
+    SettingsPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    void _onItemTapped(int index) {
-      setState(() {
-        _index = index;
-      });
-    }
+    void _onItemTapped(int index) {}
 
     homePageBloc = BlocProvider.of<HomePageBloc>(context);
     return WillPopScope(
@@ -125,7 +121,7 @@ class HomePage extends StatelessWidget {
             children: <Widget>[
               Container(
                 alignment: Alignment.center,
-                child: Text(user.email),
+                child: _widgetOptions[3],
               ),
               BlocListener<HomePageBloc, HomePageState>(
                 listener: (context, state) {
