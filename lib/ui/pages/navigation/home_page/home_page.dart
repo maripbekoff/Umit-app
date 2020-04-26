@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:umit/ui/pages/navigation/home_page/course_card.dart';
+import 'package:umit/ui/pages/navigation/home_page/daily_test_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget {
     return ListView(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 9),
           child: RichText(
             text: TextSpan(
               style: TextStyle(
@@ -54,35 +55,30 @@ class HomePage extends StatelessWidget {
                   mainAxisSpacing: 30,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  return InkWell(
-                    onTap: () {},
-                    onLongPress: () {},
-                    hoverColor: Colors.black26,
-                    focusColor: Colors.black26,
-                    splashColor: Colors.black26,
-                    highlightColor: Colors.black26,
-                    child: CourseCard(),
-                  );
+                  return CourseCard();
                 },
               ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
+                  FlatButton(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: const EdgeInsets.only(
                       top: 10,
                       bottom: 10,
                       left: 40,
                       right: 30,
                     ),
-                    decoration: BoxDecoration(
+                    color: Color(0xFFFFF5D1),
+                    onPressed: () {},
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),
                       ),
-                      color: Color(0xFFFFF5D1),
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Icon(
                           Icons.local_library,
@@ -100,16 +96,18 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
+                  FlatButton(
+                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    color: Color(0xFFCAE9FF),
                     padding:
                         EdgeInsets.symmetric(horizontal: 25, vertical: 12.5),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFCAE9FF),
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),
                         bottomRight: Radius.circular(40),
                       ),
                     ),
+                    onPressed: () {},
                     child: Center(
                       child: Icon(
                         Icons.more_horiz,
@@ -123,6 +121,8 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: 20),
+        DailyTestCard(),
       ],
     );
   }

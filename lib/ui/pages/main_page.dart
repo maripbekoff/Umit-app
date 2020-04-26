@@ -45,32 +45,31 @@ class _MainPageState extends State<MainPage> {
               onPressed: () {},
             ),
             actions: <Widget>[
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  width: 45,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Theme.of(context).accentColor,
-                      width: 3,
-                    ),
+              Container(
+                width: 45,
+                height: 45,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Theme.of(context).accentColor,
+                    width: 3,
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(3),
-                    child: CircleAvatar(
-                      child: Icon(
-                        Icons.person,
-                        size: 32,
-                        color: Colors.white,
-                      ),
-                      backgroundColor: Colors.black26,
+                ),
+                child: FlatButton(
+                  padding: const EdgeInsets.all(3),
+                  onPressed: () {},
+                  shape: CircleBorder(),
+                  child: CircleAvatar(
+                    child: Icon(
+                      Icons.person,
+                      size: 32,
+                      color: Colors.white,
                     ),
+                    backgroundColor: Colors.black26,
                   ),
                 ),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: 9),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(

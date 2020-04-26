@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: "Gilroy",
         accentColor: Color(0xFF0097FF),
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: Color(0xFFF7F7F7),
       ),
     );
   }
@@ -41,34 +41,14 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: readIsFirstLaunch(),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        switch (snapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return Text('');
-            break;
-          default:
-            if (!snapshot.hasError) {
-              if (isFirstLaunch) {
-                saveIsFirstLaunch(false);
-                return WelcomePage();
-              } else {
-                return BlocBuilder<AuthBloc, AuthState>(
-                  builder: (context, state) {
-                    if (state is AuthInitialState) {
-                      return SplashScreenPage();
-                    } else if (state is AuthenticatedState) {
-                      return MainPage();
-                    } else if (state is UnAuthenticatedState) {
-                      return LoginPageParent(userRepository: userRepository);
-                    }
-                  },
-                );
-              }
-            }
-            break;
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthInitialState) {
+          return SplashScreenPage();
+        } else if (state is AuthenticatedState) {
+          return MainPage();
+        } else if (state is UnAuthenticatedState) {
+          return LoginPageParent(userRepository: userRepository);
         }
       },
     );
