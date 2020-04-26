@@ -30,7 +30,11 @@ class DailyTestCard extends StatelessWidget {
               SizedBox(width: 20),
               Text(
                 "Ежедневные тесты",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
               ),
             ],
           ),
@@ -51,7 +55,7 @@ class DailyTestCard extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.black54,
                       fontFamily: "Gilroy",
-                      fontSize: 18,
+                      fontSize: 16,
                     ),
                     children: <TextSpan>[
                       TextSpan(
@@ -69,9 +73,14 @@ class DailyTestCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                Icon(
-                  Icons.image,
-                  size: 100,
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  height: MediaQuery.of(context).size.height * 0.1,
+                  decoration: BoxDecoration(
+                    color: Colors.red,
+                    border: Border.all(width: 3, color: Colors.white),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
               ],
             ),

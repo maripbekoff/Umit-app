@@ -27,6 +27,40 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
+  //функция скрытия иконки профиля в AppBar при переключении на влкадку настроек
+  _actionHide() {
+    if (_selectedIndex == 3) {
+      return null;
+    } else
+      return <Widget>[
+        Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Theme.of(context).accentColor,
+              width: 3,
+            ),
+          ),
+          child: FlatButton(
+            padding: const EdgeInsets.all(3),
+            onPressed: () {},
+            shape: CircleBorder(),
+            child: CircleAvatar(
+              child: Icon(
+                Icons.person,
+                size: 32,
+                color: Colors.white,
+              ),
+              backgroundColor: Colors.black26,
+            ),
+          ),
+        ),
+        SizedBox(width: 9),
+      ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -44,33 +78,7 @@ class _MainPageState extends State<MainPage> {
               color: Colors.black,
               onPressed: () {},
             ),
-            actions: <Widget>[
-              Container(
-                width: 45,
-                height: 45,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: Theme.of(context).accentColor,
-                    width: 3,
-                  ),
-                ),
-                child: FlatButton(
-                  padding: const EdgeInsets.all(3),
-                  onPressed: () {},
-                  shape: CircleBorder(),
-                  child: CircleAvatar(
-                    child: Icon(
-                      Icons.person,
-                      size: 32,
-                      color: Colors.white,
-                    ),
-                    backgroundColor: Colors.black26,
-                  ),
-                ),
-              ),
-              SizedBox(width: 9),
-            ],
+            actions: _actionHide(),
           ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _selectedIndex,
