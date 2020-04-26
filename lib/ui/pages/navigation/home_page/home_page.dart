@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
+        SizedBox(height: MediaQuery.of(context).size.height * 0.015),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 9),
           child: RichText(
@@ -29,6 +30,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.015),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
