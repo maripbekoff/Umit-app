@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:umit/ui/pages/navigation/favorite_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/home_page.dart';
 import 'package:umit/ui/pages/navigation/settings_page/settings.page.dart';
-import 'package:umit/ui/pages/navigation/tests_page.dart';
+import 'package:umit/ui/pages/navigation/tests_page/tests_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
