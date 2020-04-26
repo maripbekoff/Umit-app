@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 
-enum Theme {
-  Light,
-  Dark,
-  BlueLight,
-  BlueDark,
-}
+enum AppTheme { Light, Dark, BlueLight, BlueDark }
 
 final themeData = {
-  Theme.Light: ThemeData.light(),
-  Theme.Dark: ThemeData.dark(),
-  Theme.BlueLight: ThemeData(
+  AppTheme.Light: ThemeData.light(),
+  AppTheme.Dark: ThemeData.dark(),
+  AppTheme.BlueLight: ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.blue,
   ),
-  Theme.BlueDark: ThemeData(
+  AppTheme.BlueDark: ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.blue[700],
   ),

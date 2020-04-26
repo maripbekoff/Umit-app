@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:umit/repositories/user_repository.dart';
-import 'package:umit/src/blocs/authBloc/auth_bloc.dart';
-import 'package:umit/src/blocs/authBloc/auth_event.dart';
-import 'package:umit/src/blocs/authBloc/auth_state.dart';
-import 'package:umit/src/blocs/themeBloc/theme_bloc.dart';
-import 'package:umit/src/blocs/themeBloc/theme_state.dart';
 import 'package:umit/ui/pages/login_page.dart';
 import 'package:umit/ui/pages/main_page.dart';
 import 'package:umit/ui/pages/splash_screen_page.dart';
+
+import 'src/blocs/authBloc/bloc.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,48 +14,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => AuthBloc()..add(AppStartedEvent()),
-        child: AppTheme());
-  }
-}
-
-class AppTheme extends StatelessWidget {
-  UserRepository userRepository;
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeBloc(),
-      child: BlocBuilder<ThemeBloc, ThemeState>(
-        builder: _buildWithTheme,
-      ),
-    );
-  }
-
-  Widget _buildWithTheme(BuildContext context, ThemeState state) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: BlocProvider(
-        create: (context) => AuthBloc()..add(AppStartedEvent()),
-        child: App(
-          userRepository: userRepository,
+      theme: ThemeData(
+        fontFamily: "Gilroy",
+        accentColor: Color(0xFF0097FF),
+        scaffoldBackgroundColor: Color(0xFFF7F7F7),
+        appBarTheme: AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+            size: 40,
+          ),
         ),
       ),
-      theme: state.themeData,
-      // theme: ThemeData(
-      //   fontFamily: "Gilroy",
-      //   accentColor: Color(0xFF0097FF),
-      //   scaffoldBackgroundColor: Color(0xFFF7F7F7),
-      //   appBarTheme: AppBarTheme(
-      //     color: Colors.transparent,
-      //     elevation: 0,
-      //     iconTheme: IconThemeData(
-      //       color: Colors.black,
-      //       size: 40,
-      //     ),
-      //   ),
-      // ),
+      home: BlocProvider(
+          create: (context) => AuthBloc()..add(AppStartedEvent()),
+          child: App(userRepository: userRepository)),
     );
   }
 }

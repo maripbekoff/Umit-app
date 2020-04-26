@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:umit/src/blocs/themeBloc/bloc.dart';
+import 'package:umit/src/global/themes.dart';
 
-class AdaptationPage extends StatefulWidget {
-  AdaptationPage({Key key}) : super(key: key);
-
-  @override
-  _AdaptationPageState createState() => _AdaptationPageState();
-}
-
-class _AdaptationPageState extends State<AdaptationPage> {
+class AdaptationPage extends StatelessWidget {
   bool _isSwitched = false;
 
   @override
@@ -16,14 +12,22 @@ class _AdaptationPageState extends State<AdaptationPage> {
       child: Scaffold(
         appBar: AppBar(),
         body: Center(
-          child: SwitchListTile(
-            value: _isSwitched,
-            onChanged: (value) {
-              setState(() {
-                _isSwitched = value;
-              });
+          child: ListView.builder(
+            itemCount: AppTheme.values.length,
+            itemBuilder: (BuildContext context, int index) {
+              final itemTheme = AppTheme.values[index];
+              return Card(
+                color: themeData[itemTheme].primaryColor,
+                child: ListTile(
+                  title: Text(
+                    itemTheme.toString(),
+                    style: themeData[itemTheme].textTheme.body1,
+                  ),
+                  onTap: () => BlocProvider.of<ThemeBloc>(context)
+                      .add(ThemeChanged(theme: itemTheme)),
+                ),
+              );
             },
-            title: Text("TEST"),
           ),
         ),
       ),
