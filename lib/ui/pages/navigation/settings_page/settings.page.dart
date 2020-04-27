@@ -17,14 +17,14 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         Center(
           child: Text(
             "Настройки",
-            style: TextStyle(fontSize: 50, color: Colors.black),
+            style: TextStyle(fontSize: 38, color: Colors.black),
           ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height / 6),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,

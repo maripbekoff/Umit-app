@@ -38,7 +38,7 @@ class DailyTestCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.015),
           FlatButton(
             onPressed: () {},
             color: Color(0xFFF6F6F6),
@@ -74,7 +74,7 @@ class DailyTestCard extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.20,
                   height: MediaQuery.of(context).size.height * 0.1,
                   decoration: BoxDecoration(
                     color: Colors.red,

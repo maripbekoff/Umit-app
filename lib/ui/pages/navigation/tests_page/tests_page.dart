@@ -32,7 +32,7 @@ class TestsPage extends StatelessWidget {
               horizontal: 9,
               vertical: MediaQuery.of(context).size.height * 0.05,
             ),
-            itemCount: 5,
+            itemCount: 10,
             shrinkWrap: true,
             primary: false,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
