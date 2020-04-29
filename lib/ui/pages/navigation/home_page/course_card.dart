@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:umit/ui/pages/navigation/course_page/course_page.dart';
 
 class CourseCard extends StatelessWidget {
   CourseCard({Key key, this.snapshot}) : super(key: key);
@@ -21,7 +22,14 @@ class CourseCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
       child: FlatButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => CoursePage(),
+            ),
+          );
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),

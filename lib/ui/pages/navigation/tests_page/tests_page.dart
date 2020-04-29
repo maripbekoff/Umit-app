@@ -6,8 +6,9 @@ class TestsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color accentCol = Theme.of(context).accentColor;
-    Color greyCol = Color(0xFFF0F0F0);
+    int accentCol = 0xFF0097FF;
+    int greyCol = 0xFFF0F0F0;
+    int whiteCol = 0xFFFFFFFF;
 
     return ListView(
       children: <Widget>[
@@ -32,7 +33,7 @@ class TestsPage extends StatelessWidget {
               horizontal: 9,
               vertical: MediaQuery.of(context).size.height * 0.05,
             ),
-            itemCount: 5,
+            itemCount: 3,
             shrinkWrap: true,
             primary: false,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -42,8 +43,8 @@ class TestsPage extends StatelessWidget {
             ),
             itemBuilder: (BuildContext context, int index) {
               return TestCard(
-                iconBack: index == 0 ? 0xFF0097FF : 0xFFF0F0F0,
-                iconColor: index == 0 ? 0xFFFFFFFF : 0xFF0097FF,
+                iconBack: index == 0 ? accentCol : greyCol,
+                iconColor: index == 0 ? whiteCol : accentCol,
               );
             },
           ),

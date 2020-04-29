@@ -13,9 +13,9 @@ class HomePage extends StatelessWidget {
 
     return ListView(
       children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 9),
+          padding: const EdgeInsets.symmetric(horizontal: 25),
           child: RichText(
             text: TextSpan(
               style: TextStyle(
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -85,8 +85,8 @@ class HomePage extends StatelessWidget {
                     padding: const EdgeInsets.only(
                       top: 10,
                       bottom: 10,
-                      left: 40,
-                      right: 30,
+                      left: 25,
+                      right: 25,
                     ),
                     color: Color(0xFFFFF5D1),
                     onPressed: () {},

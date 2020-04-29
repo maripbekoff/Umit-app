@@ -7,7 +7,7 @@ class DailyTestCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20, left: 40, right: 40),
+      padding: EdgeInsets.only(top: 20, left: 25, right: 25),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -19,6 +19,7 @@ class DailyTestCard extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
+              SizedBox(width: 5),
               Transform.rotate(
                 angle: pi / 4,
                 child: Container(
@@ -38,7 +39,7 @@ class DailyTestCard extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.015),
           FlatButton(
             onPressed: () {},
             color: Color(0xFFF6F6F6),

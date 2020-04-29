@@ -58,7 +58,7 @@ class _MainPageState extends State<MainPage> {
             child: CircleAvatar(
               child: Icon(
                 Icons.person,
-                size: 32,
+                size: 34,
                 color: Colors.white,
               ),
               backgroundColor: Colors.black26,
