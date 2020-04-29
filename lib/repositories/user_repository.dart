@@ -27,5 +27,5 @@ class UserRepository {
 
   Future<FirebaseUser> getCurrentUser() async {
     return await firebaseAuth.currentUser();
-  } 
+  }
 }

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:umit/repositories/user_repository.dart';
+import 'package:umit/src/blocs/logOutBloc/bloc.dart';
 import 'package:umit/ui/pages/navigation/favorite_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/home_page.dart';
 import 'package:umit/ui/pages/navigation/settings_page/settings.page.dart';
 import 'package:umit/ui/pages/navigation/tests_page/tests_page.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key}) : super(key: key);
+  MainPage({Key key, @required this.userRepository}) : super(key: key);
+
+  UserRepository userRepository;
+  LogOutBloc logOutBloc;
 
   @override
   _MainPageState createState() => _MainPageState();
@@ -14,11 +20,13 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   int _selectedIndex = 2;
 
-  static const List<Widget> _widgetOptions = <Widget>[
+  static UserRepository userRepository;
+
+  List<Widget> _widgetOptions = <Widget>[
     FavoritePage(),
     TestsPage(),
     HomePage(),
-    SettingsPage(),
+    SettingsPageParent(userRepository: userRepository,),
   ];
 
   void _onItemTapped(int index) {

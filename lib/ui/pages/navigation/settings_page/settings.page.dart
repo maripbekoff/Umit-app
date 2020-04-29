@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:umit/repositories/user_repository.dart';
+import 'package:umit/src/blocs/logOutBloc/bloc.dart';
+import 'package:umit/ui/pages/login_page.dart';
 import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page.dart';
 
 var settingsArray = [
@@ -10,11 +14,32 @@ var settingsArray = [
   ["Выход", Icons.close, null],
 ];
 
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key key}) : super(key: key);
+class SettingsPageParent extends StatelessWidget {
+  UserRepository userRepository;
+
+  SettingsPageParent({@required this.userRepository});
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (BuildContext context) =>
+          LogOutBloc(userRepository: userRepository),
+      child: SettingsPage(
+        userRepository: userRepository,
+      ),
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  SettingsPage({Key key, @required this.userRepository}) : super(key: key);
+
+  UserRepository userRepository;
+  LogOutBloc logOutBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    logOutBloc = BlocProvider.of<LogOutBloc>(context);
     return ListView(
       children: <Widget>[
         SizedBox(height: MediaQuery.of(context).size.height * 0.1),
@@ -83,7 +108,9 @@ class SettingsPage extends StatelessWidget {
                 ),
                 child: FlatButton(
                   padding: EdgeInsets.zero,
-                  onPressed: () {},
+                  onPressed: () {
+                    logOutBloc.add(LogOutButtonPressedEvent());
+                  },
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -110,10 +137,32 @@ class SettingsPage extends StatelessWidget {
                   ),
                 ),
               ),
+              BlocListener<LogOutBloc, LogOutState>(
+                listener: (context, state) {
+                  if (state is LogOutSuccess) {
+                    navigateToLogInPage(context);
+                  }
+                },
+                child: BlocBuilder<LogOutBloc, LogOutState>(
+                  builder: (context, state) {
+                    if (state is LogOutInitial) {
+                      return Container();
+                    } else if (state is LogOutSuccess) {
+                      return Container();
+                    }
+                  },
+                ),
+              ),
             ],
           ),
         ),
       ],
     );
+  }
+
+  void navigateToLogInPage(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return LoginPageParent(userRepository: userRepository);
+    }));
   }
 }

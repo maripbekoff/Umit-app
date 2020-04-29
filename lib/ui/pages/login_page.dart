@@ -99,6 +99,7 @@ class LogInPage extends StatelessWidget {
                     hintText: "Password",
                   ),
                   keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
                 ),
               ),
               Row(
@@ -165,7 +166,7 @@ class LogInPage extends StatelessWidget {
 
   void navigateToHomeScreen(BuildContext context, FirebaseUser user) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return MainPage();
+      return MainPage(userRepository: userRepository,);
     }));
   }
 }

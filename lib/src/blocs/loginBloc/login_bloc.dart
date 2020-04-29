@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:umit/repositories/user_repository.dart';
-import 'package:umit/src/blocs/loginBloc/login_event.dart';
-import 'package:umit/src/blocs/loginBloc/login_state.dart';
+import 'package:umit/src/blocs/loginBloc/bloc.dart';
+
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   UserRepository userRepository;

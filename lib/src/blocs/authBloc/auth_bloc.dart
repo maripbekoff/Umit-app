@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:umit/repositories/user_repository.dart';
-import 'package:umit/src/blocs/authBloc/auth_event.dart';
-import 'package:umit/src/blocs/authBloc/auth_state.dart';
+import 'package:umit/src/blocs/authBloc/bloc.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   UserRepository userRepository;

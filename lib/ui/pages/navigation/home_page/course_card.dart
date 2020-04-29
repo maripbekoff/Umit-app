@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CourseCard extends StatelessWidget {
-  const CourseCard({Key key}) : super(key: key);
+  CourseCard({Key key, this.snapshot}) : super(key: key);
+
+  final DocumentSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,7 @@ class CourseCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: [
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
@@ -40,20 +43,25 @@ class CourseCard extends StatelessWidget {
                   size: 24,
                 ),
               ),
-              RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.black, fontFamily: "Gilroy"),
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "\nМатематика\n",
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
-                    TextSpan(
-                      text: "4 класс",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
+              Flexible(
+                child: RichText(
+                  text: TextSpan(
+                    style: TextStyle(color: Colors.black, fontFamily: "Gilroy"),
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "${snapshot["name"]}\n\n",
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: "${snapshot["description"]}",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w100,
+                            color: Colors.grey),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

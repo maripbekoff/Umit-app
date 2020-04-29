@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:umit/repositories/user_repository.dart';
+import 'package:umit/src/blocs/logOutBloc/bloc.dart';
 import 'package:umit/ui/pages/login_page.dart';
 import 'package:umit/ui/pages/main_page.dart';
 import 'package:umit/ui/pages/splash_screen_page.dart';
@@ -11,10 +12,12 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   UserRepository userRepository;
+  LogOutBloc logOutBloc;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Gilroy",
         accentColor: Color(0xFF0097FF),
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: BlocProvider(
-          create: (context) => AuthBloc()..add(AppStartedEvent()),
+          create: (BuildContext context) => AuthBloc()..add(AppStartedEvent()),
           child: App(userRepository: userRepository)),
     );
   }
@@ -47,7 +50,7 @@ class App extends StatelessWidget {
         if (state is AuthInitialState) {
           return SplashScreenPage();
         } else if (state is AuthenticatedState) {
-          return MainPage();
+          return MainPage(userRepository: userRepository);
         } else if (state is UnAuthenticatedState) {
           return LoginPageParent(userRepository: userRepository);
         }
