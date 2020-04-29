@@ -14,7 +14,18 @@ class _AdaptationPageState extends State<AdaptationPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: Text("Назад"),
+          titleSpacing: 0,
+          textTheme: TextTheme(
+            title: TextStyle(
+              fontFamily: "Gilroy",
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.black,
+            ),
+          ),
+        ),
         body: Center(
           child: SwitchListTile(
             value: _isSwitched,

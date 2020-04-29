@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:umit/ui/pages/navigation/tests_page/tests_page.dart';
+import 'package:umit/ui/pages/navigation/tests_page/insets/into_test_page.dart';
 
 class TestCard extends StatelessWidget {
   const TestCard({Key key, this.iconBack, this.iconColor}) : super(key: key);
@@ -21,7 +21,57 @@ class TestCard extends StatelessWidget {
       ),
       child: FlatButton(
         padding: EdgeInsets.zero,
-        onPressed: () {},
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Внимание!"),
+                content: Text("Вы уверены что хотите начать тест?"),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                titleTextStyle: TextStyle(
+                  fontSize: 18,
+                  fontFamily: "Gilroy",
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+                contentTextStyle: TextStyle(
+                  fontSize: 16,
+                  fontFamily: "Gilroy",
+                  color: Colors.black,
+                ),
+                actions: <Widget>[
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text(
+                      "Нет",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                  FlatButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => IntoTestPage(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Да",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
+        },
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
@@ -81,7 +131,7 @@ class TestCard extends StatelessWidget {
                   ),
                 ),
                 child: Icon(
-                  Icons.play_arrow, //переменные с сервера
+                  Icons.play_arrow,
                   color: Color(iconColor),
                 ),
               ),
