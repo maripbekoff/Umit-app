@@ -46,7 +46,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
+      builder: (BuildContext context, AuthState state) {
         if (state is AuthInitialState) {
           return SplashScreenPage();
         } else if (state is AuthenticatedState) {

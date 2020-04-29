@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:umit/repositories/course_repository.dart';
 import 'package:umit/ui/pages/navigation/home_page/course_card.dart';
 import 'package:umit/ui/pages/navigation/home_page/daily_test_card.dart';
 

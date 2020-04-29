@@ -17,16 +17,12 @@ var settingsArray = [
 class SettingsPageParent extends StatelessWidget {
   UserRepository userRepository;
 
-  SettingsPageParent({@required this.userRepository});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) =>
           LogOutBloc(userRepository: userRepository),
-      child: SettingsPage(
-        userRepository: userRepository,
-      ),
+      child: SettingsPage(userRepository: userRepository),
     );
   }
 }

@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
     FavoritePage(),
     TestsPage(),
     HomePage(),
-    SettingsPageParent(userRepository: userRepository,),
+    SettingsPageParent(),
   ];
 
   void _onItemTapped(int index) {
