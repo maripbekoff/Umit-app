@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 TextStyle titleTextStyle = TextStyle(
   fontFamily: "Gilroy",
   color: Colors.black,
-  fontSize: 32,
+  fontSize: 38,
 );
 
 TextStyle appBarTextStyle = TextStyle(

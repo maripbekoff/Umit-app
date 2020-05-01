@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/logOutBloc/bloc.dart';
 import 'package:umit/ui/pages/navigation/favorite_page.dart';
