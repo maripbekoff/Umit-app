@@ -69,7 +69,9 @@ class HomePage extends StatelessWidget {
                           mainAxisSpacing: 15,
                         ),
                         itemBuilder: (BuildContext context, int index) {
-                          return CourseCard(snapshot: snapshot.data.documents[index],);
+                          return CourseCard(
+                            snapshot: snapshot.data.documents[index],
+                          );
                         },
                       );
                   }

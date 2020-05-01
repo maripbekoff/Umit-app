@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:umit/ui/pages/navigation/course_page/course_page.dart';
+import 'package:umit/ui/pages/navigation/chapters_page/chapter_list_page.dart';
 
 class CourseCard extends StatelessWidget {
   CourseCard({Key key, this.snapshot}) : super(key: key);
@@ -26,7 +26,7 @@ class CourseCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CoursePage(snapshot: snapshot),
+              builder: (context) => ChapterListPage(snapshot: snapshot),
             ),
           );
         },
@@ -60,14 +60,17 @@ class CourseCard extends StatelessWidget {
                       TextSpan(
                         text: "${snapshot["name"]}\n",
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       TextSpan(
                         text: "${snapshot["description"]}",
                         style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w100,
-                            color: Colors.grey),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w100,
+                          color: Colors.grey,
+                        ),
                       ),
                     ],
                   ),

@@ -13,9 +13,9 @@ class CourseRepository {
 
     List _courses = [];
 
-    course.documents.forEach((document) {
-      Course course = Course.fromMap(document.data);
-      _courses.add(course);
-    });
+    // course.documents.forEach((document) {
+    //   Course course = Course.fromMap(document.data);
+    //   _courses.add(course);
+    // });
   }
 }

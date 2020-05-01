@@ -4,14 +4,15 @@ import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/logOutBloc/bloc.dart';
 import 'package:umit/ui/pages/login_page.dart';
 import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page.dart';
+import 'package:umit/ui/pages/splash_screen_page.dart';
 
 var settingsArray = [
-  ["Данные", Icons.insert_chart, null],
-  ["Уведомленя", Icons.notifications_none, null],
+  ["Данные", Icons.insert_chart, SplashScreenPage()],
+  ["Уведомленя", Icons.notifications_none, SplashScreenPage()],
   ["Адаптация", Icons.invert_colors, AdaptationPage()],
-  ["Приватность", Icons.vpn_key, null],
-  ["Безопасность", Icons.security, null],
-  ["Выход", Icons.close, null],
+  ["Приватность", Icons.vpn_key, SplashScreenPage()],
+  ["Безопасность", Icons.security, SplashScreenPage()],
+  ["Выход", Icons.close, SplashScreenPage()],
 ];
 
 class SettingsPageParent extends StatelessWidget {
