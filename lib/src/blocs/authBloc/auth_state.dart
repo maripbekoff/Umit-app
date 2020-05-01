@@ -10,7 +10,6 @@ class AuthInitialState extends AuthState {
 }
 
 class AuthenticatedState extends AuthState {
-
   FirebaseUser user;
 
   AuthenticatedState({@required this.user});

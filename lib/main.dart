@@ -12,8 +12,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   UserRepository userRepository;
-  LogOutBloc logOutBloc;
-
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
