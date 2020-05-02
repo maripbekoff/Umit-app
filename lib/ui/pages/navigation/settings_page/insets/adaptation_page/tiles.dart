@@ -2,11 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:umit/src/global/text_style.dart';
+import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page/insets/smart_adaptation.dart';
 
 Widget buildSmartAdaptationTile(BuildContext context) {
   return FlatButton(
     padding: EdgeInsets.zero,
-    onPressed: () {},
+    onPressed: () {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return buildSmartAdaptationDialog(context);
+        },
+      );
+    },
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20),
     ),
