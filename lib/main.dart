@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/logOutBloc/bloc.dart';
+import 'package:umit/src/global/text_style.dart';
 import 'package:umit/ui/pages/login_page.dart';
 import 'package:umit/ui/pages/main_page.dart';
 import 'package:umit/ui/pages/splash_screen_page.dart';
@@ -12,7 +13,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   UserRepository userRepository;
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,13 +23,13 @@ class MyApp extends StatelessWidget {
         accentColor: Color(0xFF0097FF),
         scaffoldBackgroundColor: Color(0xFFF7F7F7),
         appBarTheme: AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-          iconTheme: IconThemeData(
-            color: Colors.black,
-            size: 40,
-          ),
-        ),
+            color: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: Colors.black,
+              size: 40,
+            ),
+            textTheme: TextTheme(title: appBarTextStyle)),
       ),
       home: BlocProvider(
           create: (BuildContext context) => AuthBloc()..add(AppStartedEvent()),

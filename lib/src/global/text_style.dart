@@ -15,5 +15,12 @@ TextStyle appBarTextStyle = TextStyle(
 
 TextStyle defaultBoldTextStyle = TextStyle(
   fontFamily: "Gilroy",
+  color: Colors.black,
   fontWeight: FontWeight.bold,
+);
+
+TextStyle defaultRegularTextStyle = TextStyle(
+  fontFamily: "Gilroy",
+  color: Colors.black,
+  fontSize: 18,
 );

@@ -20,14 +20,6 @@ class _IntoTestPageState extends State<IntoTestPage> {
         appBar: AppBar(
           title: Text("Назад"),
           titleSpacing: 0,
-          textTheme: TextTheme(
-            title: TextStyle(
-              fontFamily: "Gilroy",
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.black,
-            ),
-          ),
         ),
         body: ListView(
           children: <Widget>[
