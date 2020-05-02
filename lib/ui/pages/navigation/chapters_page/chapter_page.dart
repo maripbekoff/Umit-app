@@ -14,7 +14,7 @@ class ChapterPage extends StatelessWidget {
   String _videoId;
   ChapterBloc _chapterBloc;
   YoutubePlayerController _controller;
-  PageController _pageController = PageController();
+  PageController _pageController = PageController(); 
   List<Widget> _bottomActions = [
     CurrentPosition(),
     ProgressBar(isExpanded: true),

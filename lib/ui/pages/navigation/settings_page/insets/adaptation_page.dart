@@ -5,9 +5,12 @@ import 'package:umit/src/global/themes.dart';
 
 class AdaptationPage extends StatelessWidget {
   bool _isSwitched = false;
+  ThemeBloc themeBloc;
 
   @override
   Widget build(BuildContext context) {
+    themeBloc = BlocProvider.of<ThemeBloc>(context);
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -34,8 +37,7 @@ class AdaptationPage extends StatelessWidget {
                     itemTheme.toString(),
                     style: themeData[itemTheme].textTheme.body1,
                   ),
-                  onTap: () => BlocProvider.of<ThemeBloc>(context)
-                      .add(ThemeChanged(theme: itemTheme)),
+                  onTap: () => themeBloc.add(ThemeChanged(theme: itemTheme)),
                 ),
               );
             },

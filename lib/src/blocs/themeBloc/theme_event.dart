@@ -5,10 +5,10 @@ import 'package:umit/src/global/themes.dart';
 abstract class ThemeEvent extends Equatable {}
 
 class ThemeChanged extends ThemeEvent {
-  final AppTheme theme;
+  AppTheme theme;
 
   ThemeChanged({@required this.theme});
 
   @override
-  List<Object> get props => [theme];
+  List<Object> get props => null;
 }
