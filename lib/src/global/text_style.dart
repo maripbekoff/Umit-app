@@ -6,6 +6,13 @@ TextStyle titleTextStyle = TextStyle(
   fontSize: 38,
 );
 
+TextStyle boldTitleTextStyle = TextStyle(
+  fontFamily: "Gilroy",
+  color: Colors.black,
+  fontWeight: FontWeight.bold,
+  fontSize: 38,
+);
+
 TextStyle appBarTextStyle = TextStyle(
   fontFamily: "Gilroy",
   fontWeight: FontWeight.bold,

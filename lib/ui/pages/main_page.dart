@@ -84,13 +84,6 @@ class _MainPageState extends State<MainPage> {
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            leading: IconButton(
-              padding: EdgeInsets.zero,
-              icon: Icon(Icons.dehaze),
-              color: Colors.black,
-              iconSize: 40,
-              onPressed: () {},
-            ),
             actions: _actionHide(),
           ),
           bottomNavigationBar: BottomNavigationBar(

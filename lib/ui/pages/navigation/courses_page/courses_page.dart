@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:umit/src/global/text_style.dart';
+import 'package:umit/ui/pages/navigation/courses_page/course_description.dart';
 
 class CoursesPage extends StatelessWidget {
   const CoursesPage({Key key}) : super(key: key);
@@ -27,31 +28,46 @@ class CoursesPage extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return ExpansionTile(
               title: Text(
-                "${++index} класс",
+                "${1 + index} класс",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               children: <Widget>[
                 ListView.separated(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   shrinkWrap: true,
                   itemCount: _subjects.length,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      leading: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.redAccent,
-                        ),
-                        padding: const EdgeInsets.all(2.5),
-                        child: Icon(
-                          Icons.functions,
-                          color: Colors.white,
-                          size: 24,
-                        ),
+                    return FlatButton(
+                      padding: EdgeInsets.zero,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CourseDescriptionPage(),
+                          ),
+                        );
+                      },
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                      title: Text(
-                        _subjects[index],
-                        style: TextStyle(fontSize: 18),
+                      child: ListTile(
+                        leading: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: Colors.redAccent,
+                          ),
+                          padding: const EdgeInsets.all(2.5),
+                          child: Icon(
+                            Icons.functions,
+                            color: Colors.white,
+                            size: 24,
+                          ),
+                        ),
+                        title: Text(
+                          _subjects[index],
+                          style: TextStyle(fontSize: 18),
+                        ),
                       ),
                     );
                   },
