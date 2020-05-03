@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:umit/ui/pages/navigation/courses_page/courses_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/course_card.dart';
 import 'package:umit/ui/pages/navigation/home_page/daily_test_card.dart';
 
@@ -90,7 +91,14 @@ class HomePage extends StatelessWidget {
                       right: 25,
                     ),
                     color: Color(0xFFFFF5D1),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CoursesPage(),
+                        ),
+                      );
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(30),

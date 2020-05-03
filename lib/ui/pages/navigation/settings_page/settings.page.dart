@@ -5,11 +5,13 @@ import 'package:umit/src/blocs/logOutBloc/bloc.dart';
 import 'package:umit/src/global/text_style.dart';
 import 'package:umit/ui/pages/login_page.dart';
 import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page/adaptation_page.dart';
+import 'package:umit/ui/pages/navigation/settings_page/insets/profile_page/profile_page.dart';
 import 'package:umit/ui/pages/splash_screen_page.dart';
+import 'package:umit/ui/pages/welcome_page/welcome_page.dart';
 
 var settingsArray = [
-  ["Данные", Icons.insert_chart, SplashScreenPage()],
-  ["Уведомленя", Icons.notifications_none, SplashScreenPage()],
+  ["Данные", Icons.insert_chart, ProfilePage()],
+  ["Уведомленя", Icons.notifications_none, WelcomePage()],
   ["Адаптация", Icons.invert_colors, AdaptationPage()],
   ["Приватность", Icons.vpn_key, SplashScreenPage()],
   ["Безопасность", Icons.security, SplashScreenPage()],
@@ -57,7 +59,7 @@ class SettingsPage extends StatelessWidget {
             children: <Widget>[
               ListView.builder(
                 padding: EdgeInsets.all(20),
-                primary: false,
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: settingsArray.length - 1,
                 itemBuilder: (BuildContext context, int index) {

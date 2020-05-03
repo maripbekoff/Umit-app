@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  introduction_screen: ^1.0.8
   firebase_auth: ^0.16.0
   cloud_firestore: ^0.13.5
   equatable: ^1.1.1
