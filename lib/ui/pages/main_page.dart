@@ -3,6 +3,7 @@ import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/logOutBloc/bloc.dart';
 import 'package:umit/ui/pages/navigation/favorite_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/home_page.dart';
+import 'package:umit/ui/pages/navigation/settings_page/insets/profile_page/profile_page.dart';
 import 'package:umit/ui/pages/navigation/settings_page/settings.page.dart';
 import 'package:umit/ui/pages/navigation/tests_page/tests_page.dart';
 
@@ -52,7 +53,14 @@ class _MainPageState extends State<MainPage> {
           ),
           child: FlatButton(
             padding: const EdgeInsets.all(3),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
+            },
             shape: CircleBorder(),
             child: CircleAvatar(
               child: Icon(
