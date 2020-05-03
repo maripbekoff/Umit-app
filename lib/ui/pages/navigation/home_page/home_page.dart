@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                           right: 25,
                           bottom: 40,
                         ),
-                        itemCount: snapshot.data.documents.length,
+                        itemCount: snapshot.data.documents.length.clamp(0, 4),
                         shrinkWrap: true,
                         primary: false,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

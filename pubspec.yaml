@@ -27,6 +27,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/img/presup/illustration.png
+    - assets/img/presup/winking-smile.png
     - assets/img/welcome_page/umit.png
     - assets/img/welcome_page/umit-app.png
     - assets/img/welcome_page/hackday2020-logo.png

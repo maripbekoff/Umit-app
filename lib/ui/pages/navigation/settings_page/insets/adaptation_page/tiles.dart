@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:umit/src/blocs/selectedThemeBloc/selected_theme_bloc.dart';
+import 'package:umit/src/blocs/switchBloc/switch_bloc.dart';
+import 'package:umit/src/blocs/themeBloc/bloc.dart';
 import 'package:umit/src/global/text_style.dart';
+import 'package:umit/src/global/themes.dart';
 import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page/insets/smart_adaptation.dart';
 
 Widget buildSmartAdaptationTile(BuildContext context) {
-  return FlatButton(
-    padding: EdgeInsets.zero,
-    onPressed: () {
+  return ListTile(
+    onTap: () {
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -15,63 +18,51 @@ Widget buildSmartAdaptationTile(BuildContext context) {
         },
       );
     },
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
+    leading: Container(
+      padding: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(3, 169, 244, 0.2),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Icon(
+        Icons.insert_chart,
+        color: Theme.of(context).accentColor,
+        size: 20,
+      ),
     ),
-    child: ListTile(
-      leading: Container(
-        padding: EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: Color.fromRGBO(3, 169, 244, 0.2),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Icon(
-          Icons.insert_chart,
-          color: Theme.of(context).accentColor,
-          size: 20,
-        ),
-      ),
-      title: Text(
-        "Умная адаптация",
-        style: defaultRegularTextStyle,
-      ),
+    title: Text(
+      "Умная адаптация",
+      style: defaultRegularTextStyle,
     ),
   );
 }
 
 Widget buildColorSettingsExpansionTile(BuildContext context) {
-  List<Color> _themeColors = [
-    Color(0xFF0097FF),
-    Color(0xFFFF6D62),
-    Color(0xFF4CAF50),
-  ];
+  ThemeBloc themeBloc = BlocProvider.of<ThemeBloc>(context);
+  SwitchBloc switchBloc = BlocProvider.of<SwitchBloc>(context);
+  SelectedThemeBloc selectedThemeBloc =
+      BlocProvider.of<SelectedThemeBloc>(context);
 
-  bool _currentValue = false;
-
-  int _currentIndex = 2;
-  Widget _currentThemeIndicator = Positioned(
-    right: -2,
-    top: -2,
-    child: Container(
-      width: 12,
-      height: 12,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.green,
-        border: Border.all(
-          width: 2,
-          color: Colors.white,
+  _buildSelectedThemeIndicator() {
+    return Positioned(
+      right: -2,
+      top: -2,
+      child: Container(
+        width: 12,
+        height: 12,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.green,
+          border: Border.all(
+            width: 2,
+            color: Colors.white,
+          ),
         ),
       ),
-    ),
-  );
-
-  Widget _checkCurrentTheme(int index) {
-    if (_currentIndex == index)
-      return _currentThemeIndicator;
-    else
-      return SizedBox(); //если поставить null выдаст ошибку, в stack не может быть null
+    );
   }
+
+  _buildFlatButton(state, int index, AppTheme itemTheme) {}
 
   return ExpansionTile(
     leading: Container(
@@ -98,67 +89,110 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
             scrollDirection: Axis.horizontal,
             primary: false,
             shrinkWrap: true,
-            itemCount: _themeColors.length,
+            itemCount: AppTheme.values.length,
             itemBuilder: (BuildContext context, int index) {
-              return FlatButton(
-                padding: EdgeInsets.zero,
-                onPressed: () {},
-                child: Column(
-                  children: <Widget>[
-                    Stack(
-                      overflow: Overflow.visible,
+              final itemTheme = AppTheme.values[index];
+
+              return BlocBuilder<SelectedThemeBloc, SelectedThemeState>(
+                builder: (BuildContext context, SelectedThemeState state) {
+                  return FlatButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {
+                      selectedThemeBloc
+                          .add(SelectedTheme(selectedThemeIndex: index));
+                      themeBloc.add(ThemeChanged(theme: itemTheme));
+                    },
+                    child: Column(
                       children: <Widget>[
+                        Stack(
+                          overflow: Overflow.visible,
+                          children: <Widget>[
+                            Container(
+                              height: 20,
+                              width: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(10),
+                                ),
+                                color: themeData[itemTheme].primaryColor,
+                              ),
+                            ),
+                            state.props[0] == index
+                                ? _buildSelectedThemeIndicator()
+                                : Offstage(),
+                          ],
+                        ),
                         Container(
                           height: 20,
                           width: 40,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.vertical(
-                              top: Radius.circular(10),
+                              bottom: Radius.circular(10),
                             ),
-                            color: _themeColors[index],
+                            color: Color(0xFFF0F0F0),
                           ),
                         ),
-                        _checkCurrentTheme(index),
                       ],
                     ),
-                    Container(
-                      height: 20,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(10),
-                        ),
-                        color: Color(0xFFF0F0F0),
-                      ),
-                    ),
-                  ],
-                ),
+                  );
+                },
               );
             },
           ),
         ),
       ),
-      SwitchListTile(
-        value: _currentValue,
-        onChanged: (bool value) {
-          _currentValue = value;
+      BlocBuilder<SwitchBloc, SwitchState>(
+        builder: (BuildContext context, SwitchState state) {
+          if (state is SwitchChangedTheme) {
+            return SwitchListTile.adaptive(
+              value: state.isSwitched,
+              onChanged: (bool value) {
+                debugPrint('Activated [SwitchChangedTheme] Switch  /  $value');
+                switchBloc.add(SwitchChanged(isSwitched: value));
+                if (value) {
+                  themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                } else {
+                  themeBloc.add(ThemeChanged(theme: AppTheme.Default));
+                }
+              },
+              title: Text(
+                "Контрастность",
+                style: defaultRegularTextStyle,
+              ),
+            );
+          } else if (state is SwitchInitial) {
+            return SwitchListTile.adaptive(
+              value: state.props[0],
+              onChanged: (bool value) {
+                debugPrint('Activated Initial Switch   /   $value');
+                switchBloc.add(SwitchChanged(isSwitched: value));
+
+                if (value) {
+                  themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                } else {
+                  themeBloc.add(ThemeChanged(theme: AppTheme.Default));
+                }
+              },
+              title: Text(
+                "Контрастность",
+                style: defaultRegularTextStyle,
+              ),
+            );
+          }
         },
-        title: Text(
-          "Контрастность",
-          style: defaultRegularTextStyle,
-        ),
       ),
     ],
   );
 }
 
 Widget buildVoiceoverSwitchListTile(BuildContext context) {
-  bool _currentValue = false;
+  bool _isSwitched = true;
 
-  return SwitchListTile(
-    value: _currentValue,
+  return SwitchListTile.adaptive(
+    value: _isSwitched,
     onChanged: (bool value) {
-      _currentValue = value;
+      _isSwitched = value;
+      print(value);
     },
     title: Text(
       "Talkback/Voiceover",
@@ -170,7 +204,7 @@ Widget buildVoiceoverSwitchListTile(BuildContext context) {
 Widget buildSubtitlesSwitchListTile(BuildContext context) {
   bool _currentValue = false;
 
-  return SwitchListTile(
+  return SwitchListTile.adaptive(
     value: _currentValue,
     onChanged: (bool value) {
       _currentValue = value;

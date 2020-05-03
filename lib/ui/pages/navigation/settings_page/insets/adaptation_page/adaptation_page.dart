@@ -46,9 +46,7 @@ class AdaptationPage extends StatelessWidget {
                     ),
                     child: FlatButton(
                       padding: EdgeInsets.zero,
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
+                      onPressed: () => Navigator.of(context).pop(),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),

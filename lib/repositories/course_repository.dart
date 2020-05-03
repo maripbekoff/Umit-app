@@ -1,21 +1,20 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:umit/models/course_model.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CourseRepository {
-  Firestore firestore;
+// class CourseRepository {
+//   Firestore firestore;
 
-  CourseRepository() {
-    this.firestore = Firestore.instance;
-  }
+//   CourseRepository() {
+//     this.firestore = Firestore.instance;
+//   }
 
-  Future<DocumentSnapshot> getCourse() async {
-    QuerySnapshot course = await firestore.collection('Courses').getDocuments();
+//   Future<DocumentSnapshot> getCourse() async {
+//     QuerySnapshot course = await firestore.collection('Courses').getDocuments();
 
-    List _courses = [];
+//     List _courses = [];
 
-    // course.documents.forEach((document) {
-    //   Course course = Course.fromMap(document.data);
-    //   _courses.add(course);
-    // });
-  }
-}
+//     // course.documents.forEach((document) {
+//     //   Course course = Course.fromMap(document.data);
+//     //   _courses.add(course);
+//     // });
+//   }
+// }
