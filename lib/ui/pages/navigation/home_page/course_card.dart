@@ -51,13 +51,14 @@ class CourseCard extends StatelessWidget {
                   size: 24,
                 ),
               ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.015),
               Flexible(
                 child: RichText(
                   text: TextSpan(
                     style: TextStyle(color: Colors.black, fontFamily: "Gilroy"),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "${snapshot["name"]}\n\n",
+                        text: "${snapshot["name"]}\n",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

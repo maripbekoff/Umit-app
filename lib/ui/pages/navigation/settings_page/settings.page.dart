@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:umit/repositories/user_repository.dart';
 import 'package:umit/src/blocs/logOutBloc/bloc.dart';
+import 'package:umit/src/global/text_style.dart';
 import 'package:umit/ui/pages/login_page.dart';
-import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page.dart';
+import 'package:umit/ui/pages/navigation/settings_page/insets/adaptation_page/adaptation_page.dart';
 import 'package:umit/ui/pages/splash_screen_page.dart';
 
 var settingsArray = [
@@ -43,7 +44,7 @@ class SettingsPage extends StatelessWidget {
         Center(
           child: Text(
             "Настройки",
-            style: TextStyle(fontSize: 38, color: Colors.black),
+            style: titleTextStyle,
           ),
         ),
         SizedBox(height: MediaQuery.of(context).size.height * 0.05),

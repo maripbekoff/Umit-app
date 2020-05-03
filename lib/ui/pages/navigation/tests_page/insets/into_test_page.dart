@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:umit/src/global/text_style.dart';
 
 class IntoTestPage extends StatefulWidget {
   IntoTestPage({Key key}) : super(key: key);
@@ -19,14 +20,6 @@ class _IntoTestPageState extends State<IntoTestPage> {
         appBar: AppBar(
           title: Text("Назад"),
           titleSpacing: 0,
-          textTheme: TextTheme(
-            title: TextStyle(
-              fontFamily: "Gilroy",
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-              color: Colors.black,
-            ),
-          ),
         ),
         body: ListView(
           children: <Widget>[
@@ -34,10 +27,7 @@ class _IntoTestPageState extends State<IntoTestPage> {
             Center(
               child: Text(
                 "Тест по физике", //получать переменную с бэка
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 38,
-                ),
+                style: titleTextStyle,
               ),
             ),
             SizedBox(height: MediaQuery.of(context).size.height * 0.05),
