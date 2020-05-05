@@ -2,16 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:umit/ui/pages/navigation/chapters_page/chapter_list_page.dart';
 
-class RecomendedCourseCard extends StatelessWidget {
-  RecomendedCourseCard({Key key, this.snapshot}) : super(key: key);
+class CourseCard extends StatelessWidget {
+  CourseCard({Key key, this.snapshot}) : super(key: key);
 
-  final DocumentSnapshot snapshot;
+  final snapshot;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).accentColor,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             blurRadius: 20,
@@ -58,10 +58,9 @@ class RecomendedCourseCard extends StatelessWidget {
                     style: TextStyle(color: Colors.black, fontFamily: "Gilroy"),
                     children: <TextSpan>[
                       TextSpan(
-                        text: "${snapshot['']}\n",
+                        text: "${snapshot["name"]}\n",
                         style: TextStyle(
                           fontSize: 16,
-                          color: Theme.of(context).cardColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

@@ -23,7 +23,11 @@ final themeData = {
       color: Color(0xFFFFFF00),
     ),
     appBarTheme: AppBarTheme(
+<<<<<<< HEAD
       color: Colors.transparent,
+=======
+      color: Colors.red,
+>>>>>>> 2256d318e5fb97735dd32bf645574e98f033aa5d
       elevation: 0,
     ),
     backgroundColor: Color(0xFFFFFF00),
@@ -33,6 +37,7 @@ final themeData = {
     unselectedWidgetColor: Colors.black,
     primarySwatch: customAdaptedColor,
   ),
+<<<<<<< HEAD
 };
 
 Map<int, Color> primaryAdaptedSwatchColor = {
@@ -46,6 +51,13 @@ Map<int, Color> primaryAdaptedSwatchColor = {
   700: Color.fromRGBO(0, 255, 255, .8),
   800: Color.fromRGBO(0, 255, 255, .9),
   900: Color.fromRGBO(0, 255, 255, 1),
+=======
+  AppTheme.Dark: ThemeData.dark(),
+  AppTheme.Adapted: ThemeData(
+    primaryColor: Colors.red,
+    appBarTheme: AppBarTheme(),
+  ),
+>>>>>>> 2256d318e5fb97735dd32bf645574e98f033aa5d
 };
 
 MaterialColor customAdaptedColor =

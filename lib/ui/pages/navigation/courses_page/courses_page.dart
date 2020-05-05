@@ -11,16 +11,6 @@ class CoursesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Firestore firestore = Firestore.instance;
 
-    final List<String> _subjects = [
-      "Англ.яз",
-      "Матем",
-      "Физика",
-      "Физра",
-      "Химия",
-      "ИЗО",
-      "Ардуино",
-    ];
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -40,15 +30,19 @@ class CoursesPage extends StatelessWidget {
                   itemCount: snapshot.data.documents.length,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
-                    return ExpansionTile(
+                    return ListTile(
                       title: Text(
                         "${snapshot.data.documents[index]['name']}",
                         style: TextStyle(
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
-                      children: <Widget>[
-                        CoursesChapterPage(snapshot.data.documents[index]),
-                      ],
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    CourseDescriptionPage(snapshot: snapshot.data.documents[index],)));
+                      },
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
