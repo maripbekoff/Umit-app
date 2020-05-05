@@ -9,8 +9,10 @@ final themeData = {
     fontFamily: 'Gilroy',
     backgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      color: Colors.white,
+      color: Color(0xFFF6F6F6),
+      elevation: 0,
     ),
+    scaffoldBackgroundColor: Color(0xFFF6F6F6),
   ),
   AppTheme.Dark: ThemeData.dark(),
 };

@@ -141,8 +141,8 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
           ),
         ),
       ),
-      BlocBuilder<SwitchBloc, SwitchState>(
-        builder: (BuildContext context, SwitchState state) {
+      BlocListener<SwitchBloc, SwitchState>(
+        listener: (BuildContext context, SwitchState state) {
           if (state is SwitchChangedTheme) {
             return SwitchListTile.adaptive(
               value: state.isSwitched,
@@ -160,26 +160,49 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
                 style: defaultRegularTextStyle,
               ),
             );
-          } else if (state is SwitchInitial) {
-            return SwitchListTile.adaptive(
-              value: state.props[0],
-              onChanged: (bool value) {
-                debugPrint('Activated Initial Switch   /   $value');
-                switchBloc.add(SwitchChanged(isSwitched: value));
-
-                if (value) {
-                  themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
-                } else {
-                  themeBloc.add(ThemeChanged(theme: AppTheme.Default));
-                }
-              },
-              title: Text(
-                "Контрастность",
-                style: defaultRegularTextStyle,
-              ),
-            );
           }
         },
+        child: BlocBuilder<SwitchBloc, SwitchState>(
+          builder: (BuildContext context, SwitchState state) {
+            if (state is SwitchChangedTheme) {
+              return SwitchListTile.adaptive(
+                value: state.isSwitched,
+                onChanged: (bool value) {
+                  debugPrint(
+                      'Activated [SwitchChangedTheme] Switch  /  $value');
+                  switchBloc.add(SwitchChanged(isSwitched: value));
+                  if (value) {
+                    themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                  } else {
+                    themeBloc.add(ThemeChanged(theme: AppTheme.Default));
+                  }
+                },
+                title: Text(
+                  "Контрастность",
+                  style: defaultRegularTextStyle,
+                ),
+              );
+            } else if (state is SwitchInitial) {
+              return SwitchListTile.adaptive(
+                value: state.props[0],
+                onChanged: (bool value) {
+                  debugPrint('Activated Initial Switch   /   $value');
+                  switchBloc.add(SwitchChanged(isSwitched: value));
+
+                  if (value) {
+                    themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                  } else {
+                    themeBloc.add(ThemeChanged(theme: AppTheme.Default));
+                  }
+                },
+                title: Text(
+                  "Контрастность",
+                  style: defaultRegularTextStyle,
+                ),
+              );
+            }
+          },
+        ),
       ),
     ],
   );

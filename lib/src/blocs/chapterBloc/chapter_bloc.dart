@@ -9,12 +9,12 @@ part 'chapter_state.dart';
 
 class ChapterBloc extends Bloc<ChapterEvent, ChapterState> {
   @override
-  ChapterState get initialState => ChapterInitial();
+  ChapterState get initialState => ChapterInitial(currentPage: 0);
 
   @override
   Stream<ChapterState> mapEventToState(ChapterEvent event) async* {
     if (event is ChapterSlidedPage) {
-      yield ChapterCurrentPageState(currentPage: event.currentPage);
+      yield ChapterInitial(currentPage: event.currentPage);
     }
   }
 }

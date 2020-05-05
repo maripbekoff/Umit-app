@@ -9,15 +9,14 @@ class AdaptationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(automaticallyImplyLeading: false),
         body: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Center(
               child: Text("Адаптация", style: titleTextStyle),
             ),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,

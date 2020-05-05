@@ -12,7 +12,7 @@ class TestsPage extends StatelessWidget {
 
     return ListView(
       children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
         Center(
           child: Text(
             "Тестирование",
@@ -22,7 +22,7 @@ class TestsPage extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,

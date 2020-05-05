@@ -1,5 +1,5 @@
 name: umit
-description: A new Flutter project.
+description: Umit it is an adapted system of education to people with special requirements.
 
 version: 1.0.0+1
 
@@ -35,6 +35,7 @@ flutter:
     - assets/img/welcome_page/Kids with disabilities.png
     - assets/img/welcome_page/Nick Vuychich.png
     - assets/img/welcome_page/Steven Hocking.png
+    - assets/img/login_page/background.png
   fonts:
     - family: Gilroy
       fonts:

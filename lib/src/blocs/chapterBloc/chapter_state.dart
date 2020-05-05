@@ -1,19 +1,12 @@
 part of 'chapter_bloc.dart';
 
-abstract class ChapterState extends Equatable {
-  const ChapterState();
-}
+abstract class ChapterState extends Equatable {}
 
 class ChapterInitial extends ChapterState {
-  @override
-  List<Object> get props => [];
-}
+  int currentPage = 0;
 
-class ChapterCurrentPageState extends ChapterState {
-  int currentPage;
-
-  ChapterCurrentPageState({@required this.currentPage});
+  ChapterInitial({@required this.currentPage});
 
   @override
-  List<Object> get props => [this.currentPage];
+  List<Object> get props => null;
 }

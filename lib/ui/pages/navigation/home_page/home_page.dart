@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:umit/ui/pages/main_page.dart';
 import 'package:umit/ui/pages/navigation/courses_page/courses_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/course_card.dart';
 import 'package:umit/ui/pages/navigation/home_page/daily_test_card.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key key}) : super(key: key);
+
+  HomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,21 +15,21 @@ class HomePage extends StatelessWidget {
 
     return ListView(
       children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: RichText(
             text: TextSpan(
               style: TextStyle(
                 fontFamily: "Gilroy",
-                fontSize: 38,
+                fontSize: 32,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
               children: <TextSpan>[
                 TextSpan(text: "Привет,\n"),
                 TextSpan(
-                  text: "Username!",
+                  text: "${user.displayName}!",
                   style: TextStyle(color: Theme.of(context).accentColor),
                 ),
               ],
@@ -45,6 +47,16 @@ class HomePage extends StatelessWidget {
           ),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(
+                  'Рекомендуемые курсы',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+              ),
               StreamBuilder<QuerySnapshot>(
                 stream: firestore.collection('Courses').snapshots(),
                 builder: (BuildContext context,
@@ -57,7 +69,7 @@ class HomePage extends StatelessWidget {
                       return GridView.builder(
                         padding: EdgeInsets.only(
                           left: 25,
-                          top: 25,
+                          top: 10,
                           right: 25,
                           bottom: 40,
                         ),
@@ -85,10 +97,10 @@ class HomePage extends StatelessWidget {
                   FlatButton(
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     padding: const EdgeInsets.only(
-                      top: 10,
-                      bottom: 10,
+                      top: 8,
+                      bottom: 8,
                       left: 25,
-                      right: 25,
+                      right: 20,
                     ),
                     color: Color(0xFFFFF5D1),
                     onPressed: () {
@@ -116,7 +128,7 @@ class HomePage extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             letterSpacing: 4,
-                            fontSize: 18,
+                            fontSize: 17,
                             color: Color(0xFFD9C993),
                           ),
                         ),
@@ -127,7 +139,7 @@ class HomePage extends StatelessWidget {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     color: Color(0xFFCAE9FF),
                     padding:
-                        EdgeInsets.symmetric(horizontal: 25, vertical: 12.5),
+                        EdgeInsets.symmetric(horizontal: 25, vertical: 10.5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40),

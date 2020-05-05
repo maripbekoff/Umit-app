@@ -1,8 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:umit/src/global/text_style.dart';
 
 class CourseDescriptionPage extends StatelessWidget {
-  const CourseDescriptionPage({Key key}) : super(key: key);
+
+  DocumentSnapshot snapshot;
+
+  CourseDescriptionPage({Key key, this.snapshot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -77,11 +77,8 @@ class ChapterWidget extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (BuildContext context) => BlocProvider(
-                          create: (BuildContext context) => ChapterBloc(),
-                          child: ChapterPage(
-                            snapshot: snapshot["lessons"][index],
-                          ),
+                        builder: (BuildContext context) => ChapterPage(
+                          snapshot: snapshot["lessons"][index],
                         ),
                       ),
                     );

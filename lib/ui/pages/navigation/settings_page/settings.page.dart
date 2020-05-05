@@ -42,14 +42,14 @@ class SettingsPage extends StatelessWidget {
     logOutBloc = BlocProvider.of<LogOutBloc>(context);
     return ListView(
       children: <Widget>[
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.15),
         Center(
           child: Text(
             "Настройки",
             style: titleTextStyle,
           ),
         ),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.15),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,

@@ -14,7 +14,7 @@ class ChapterPage extends StatelessWidget {
   String _videoId;
   ChapterBloc _chapterBloc;
   YoutubePlayerController _controller;
-  PageController _pageController = PageController(); 
+  PageController _pageController = PageController();
   List<Widget> _bottomActions = [
     CurrentPosition(),
     ProgressBar(isExpanded: true),
@@ -47,13 +47,13 @@ class ChapterPage extends StatelessWidget {
               ),
               child: BlocListener<ChapterBloc, ChapterState>(
                 listener: (BuildContext context, ChapterState state) {
-                  if (state is ChapterCurrentPageState)
-                    _nextPage = 1 + state.props[0];
+                  if (state is ChapterInitial)
+                    _nextPage = 1 + state.currentPage;
                 },
                 child: BlocBuilder<ChapterBloc, ChapterState>(
                   builder: (BuildContext context, ChapterState state) {
-                    if (state is ChapterCurrentPageState) {
-                      return buildCurrentChapterPage(state.props[0]);
+                    if (state is ChapterInitial) {
+                      return buildCurrentChapterPage(state.currentPage);
                     } else if (state is ChapterInitial) {
                       return buildInitialChapterPage();
                     }
@@ -118,7 +118,13 @@ class ChapterPage extends StatelessWidget {
                   vertical: 15,
                   horizontal: _size.width / 4,
                 ),
-                child: Text('Далее', style: defaultBoldTextStyle),
+                child: Text(
+                  'Далее',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 onPressed: () => slideToNextPage(_nextPage),
               ),
             )
