@@ -6,7 +6,6 @@ import 'package:umit/ui/pages/navigation/home_page/course_card.dart';
 import 'package:umit/ui/pages/navigation/home_page/daily_test_card.dart';
 
 class HomePage extends StatelessWidget {
-
   HomePage({Key key}) : super(key: key);
 
   @override
@@ -30,7 +29,7 @@ class HomePage extends StatelessWidget {
                 TextSpan(text: "Привет,\n"),
                 TextSpan(
                   text: "${user.displayName}!",
-                  style: TextStyle(color: Theme.of(context).accentColor),
+                  style: TextStyle(color: Theme.of(context).primaryColor),
                 ),
               ],
             ),
@@ -43,7 +42,7 @@ class HomePage extends StatelessWidget {
               topLeft: Radius.circular(40),
               bottomRight: Radius.circular(40),
             ),
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
           ),
           child: Column(
             children: <Widget>[

@@ -23,7 +23,7 @@ class ProfilePage extends StatelessWidget {
               ),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF0679E4),
+                  color: Theme.of(context).primaryColor,
                 ),
                 child: Stack(
                   children: <Widget>[
@@ -88,7 +88,7 @@ class ProfilePage extends StatelessWidget {
                               TextSpan(
                                 text: "Класс или группа",
                                 style: TextStyle(
-                                    color: Color(0xFF004A8F),
+                                    color: Theme.of(context).accentColor,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold),
                               ),

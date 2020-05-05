@@ -19,7 +19,7 @@ class AdaptationPage extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: Theme.of(context).backgroundColor,
                 borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
               ),
               child: Column(

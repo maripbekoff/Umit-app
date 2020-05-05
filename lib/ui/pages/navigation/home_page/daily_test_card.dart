@@ -9,7 +9,7 @@ class DailyTestCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 20, left: 25, right: 25),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).backgroundColor,
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(40),
           topLeft: Radius.circular(40),

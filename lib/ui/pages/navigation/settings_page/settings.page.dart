@@ -52,7 +52,7 @@ class SettingsPage extends StatelessWidget {
         SizedBox(height: MediaQuery.of(context).size.height * 0.15),
         Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
             borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
           ),
           child: Column(
@@ -80,12 +80,12 @@ class SettingsPage extends StatelessWidget {
                       leading: Container(
                         padding: EdgeInsets.all(8),
                         decoration: BoxDecoration(
-                          color: Color.fromRGBO(3, 169, 244, 0.2),
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Icon(
                           settingsArray[index][1],
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).backgroundColor,
                           size: 20,
                         ),
                       ),
@@ -118,7 +118,6 @@ class SettingsPage extends StatelessWidget {
                     leading: Container(
                       padding: EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Color.fromRGBO(244, 67, 54, 0.5),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Icon(

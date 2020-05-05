@@ -11,7 +11,7 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).accentColor,
         boxShadow: [
           BoxShadow(
             blurRadius: 20,
@@ -61,6 +61,7 @@ class CourseCard extends StatelessWidget {
                         text: "${snapshot["name"]}\n",
                         style: TextStyle(
                           fontSize: 16,
+                          color: Theme.of(context).cardColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

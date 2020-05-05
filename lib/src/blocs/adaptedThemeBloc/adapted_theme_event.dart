@@ -5,7 +5,7 @@ import 'package:umit/src/global/themes.dart';
 abstract class AdaptedThemeEvent extends Equatable {}
 
 class AdaptedThemeToggled extends AdaptedThemeEvent {
-  AdaptedTheme adaptedAppTheme;
+  AppTheme adaptedAppTheme;
 
   AdaptedThemeToggled({@required this.adaptedAppTheme});
 

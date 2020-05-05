@@ -117,7 +117,7 @@ Widget buildSmartAdaptationDialog(BuildContext context) {
                                   CompletedSmartAdaptationPage()));
                     }
                   },
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -125,7 +125,7 @@ Widget buildSmartAdaptationDialog(BuildContext context) {
                     "Да",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Theme.of(context).accentColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -143,7 +143,7 @@ Widget buildSmartAdaptationDialog(BuildContext context) {
                                   CompletedSmartAdaptationPage()));
                     }
                   },
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -151,7 +151,7 @@ Widget buildSmartAdaptationDialog(BuildContext context) {
                     "Нет",
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Theme.of(context).accentColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

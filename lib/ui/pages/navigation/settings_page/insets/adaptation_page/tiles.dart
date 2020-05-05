@@ -21,12 +21,12 @@ Widget buildSmartAdaptationTile(BuildContext context) {
     leading: Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(3, 169, 244, 0.2),
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Icon(
         Icons.insert_chart,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).backgroundColor,
         size: 20,
       ),
     ),
@@ -68,12 +68,12 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
     leading: Container(
       padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
-        color: Color.fromRGBO(3, 169, 244, 0.2),
+        color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Icon(
         Icons.palette,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).backgroundColor,
         size: 20,
       ),
     ),
@@ -89,7 +89,7 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
             scrollDirection: Axis.horizontal,
             primary: false,
             shrinkWrap: true,
-            itemCount: AppTheme.values.length,
+            itemCount: AppTheme.values.length - 1,
             itemBuilder: (BuildContext context, int index) {
               final itemTheme = AppTheme.values[index];
 
@@ -150,7 +150,7 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
                 debugPrint('Activated [SwitchChangedTheme] Switch  /  $value');
                 switchBloc.add(SwitchChanged(isSwitched: value));
                 if (value) {
-                  themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                  themeBloc.add(ThemeChanged(theme: AppTheme.Adapted));
                 } else {
                   themeBloc.add(ThemeChanged(theme: AppTheme.Default));
                 }
@@ -172,7 +172,7 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
                       'Activated [SwitchChangedTheme] Switch  /  $value');
                   switchBloc.add(SwitchChanged(isSwitched: value));
                   if (value) {
-                    themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                    themeBloc.add(ThemeChanged(theme: AppTheme.Adapted));
                   } else {
                     themeBloc.add(ThemeChanged(theme: AppTheme.Default));
                   }
@@ -190,7 +190,7 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
                   switchBloc.add(SwitchChanged(isSwitched: value));
 
                   if (value) {
-                    themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                    themeBloc.add(ThemeChanged(theme: AppTheme.Adapted));
                   } else {
                     themeBloc.add(ThemeChanged(theme: AppTheme.Default));
                   }
