@@ -150,7 +150,7 @@ Widget buildColorSettingsExpansionTile(BuildContext context) {
                 debugPrint('Activated [SwitchChangedTheme] Switch  /  $value');
                 switchBloc.add(SwitchChanged(isSwitched: value));
                 if (value) {
-                  themeBloc.add(ThemeChanged(theme: AppTheme.Dark));
+                  themeBloc.add(ThemeChanged(theme: AppTheme.Adapted));
                 } else {
                   themeBloc.add(ThemeChanged(theme: AppTheme.Default));
                 }

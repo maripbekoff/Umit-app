@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:umit/ui/pages/navigation/chapters_page/chapter_page.dart';
-import 'package:umit/ui/pages/navigation/courses_page/course_description.dart';
 
 class CoursesChapterPage extends StatelessWidget {
   DocumentSnapshot snapshot;

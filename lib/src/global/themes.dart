@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 
-enum AppTheme { Default, Dark }
-
-enum AdaptedTheme { Adapted }
+enum AppTheme { Default, Dark, Adapted }
 
 final themeData = {
   AppTheme.Default: ThemeData(
     fontFamily: 'Gilroy',
     backgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      color: Color(0xFFF6F6F6),
+      color: Colors.red,
       elevation: 0,
     ),
     scaffoldBackgroundColor: Color(0xFFF6F6F6),
   ),
   AppTheme.Dark: ThemeData.dark(),
-};
-
-final adaptedThemeData = {
-  AdaptedTheme.Adapted: ThemeData(
+  AppTheme.Adapted: ThemeData(
     primaryColor: Colors.red,
-  )
+    appBarTheme: AppBarTheme(),
+  ),
 };

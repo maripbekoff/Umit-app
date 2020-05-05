@@ -1,26 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:umit/src/global/text_style.dart';
+import 'package:umit/ui/pages/main_page.dart';
 
 class CourseDescriptionPage extends StatelessWidget {
-
   DocumentSnapshot snapshot;
+  Firestore firestore = Firestore.instance;
+  String documentId;
+  String userId;
 
   CourseDescriptionPage({Key key, this.snapshot}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _randomList = [
-      "Бинарный код",
-      "Массивы",
-      "Циклы",
-      "Переменные",
-      "ИКЕЯ",
-    ];
-
-    final String _courseTitle = "Название курса";
-    final String _courseDescription =
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue. A scelerisque purus semper eget. Amet aliquam id diam maecenas. Maecenas pharetra convallis posuere morbi.";
+    documentId = snapshot.documentID;
+    userId = user.uid;
 
     return SafeArea(
       child: Scaffold(
@@ -33,7 +27,7 @@ class CourseDescriptionPage extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.06),
             Center(
               child: Text(
-                _courseTitle,
+                '${snapshot['name']}',
                 style: titleTextStyle,
                 softWrap: true,
                 textAlign: TextAlign.center,
@@ -64,7 +58,7 @@ class CourseDescriptionPage extends StatelessWidget {
                             ),
                           ),
                           TextSpan(
-                            text: _courseDescription,
+                            text: '${snapshot['description']}',
                             style: defaultRegularTextStyle,
                           ),
                         ],
@@ -86,13 +80,13 @@ class CourseDescriptionPage extends StatelessWidget {
                       ),
                       children: <Widget>[
                         ListView.separated(
-                          itemCount: _randomList.length,
+                          itemCount: snapshot['lessons'].length,
                           physics: NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               title: Text(
-                                "${1 + index} урок. ${_randomList[index]}",
+                                "${1 + index} урок. ${snapshot['lessons'][index]['subject']}",
                                 style: defaultRegularTextStyle,
                               ),
                             );
@@ -110,7 +104,22 @@ class CourseDescriptionPage extends StatelessWidget {
                     child: Center(
                       child: FlatButton(
                         padding: EdgeInsets.all(20),
-                        onPressed: () {},
+                        onPressed: () {
+                          firestore
+                              .collection('Users')
+                              .document('$userId')
+                              .updateData(
+                            {
+                              'courses': [
+                                {
+                                  'cid': '$documentId',
+                                  'lastLesson': '0',
+                                  'complete': false,
+                                }
+                              ]
+                            },
+                          );
+                        },
                         color: Theme.of(context).accentColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),

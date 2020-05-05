@@ -4,14 +4,16 @@ import 'package:umit/ui/pages/main_page.dart';
 import 'package:umit/ui/pages/navigation/courses_page/courses_page.dart';
 import 'package:umit/ui/pages/navigation/home_page/course_card.dart';
 import 'package:umit/ui/pages/navigation/home_page/daily_test_card.dart';
+import 'package:umit/ui/pages/navigation/home_page/recomended_course_card.dart';
 
 class HomePage extends StatelessWidget {
-
   HomePage({Key key}) : super(key: key);
+  Firestore firestore = Firestore.instance;
+  String userId;
 
   @override
   Widget build(BuildContext context) {
-    Firestore firestore = Firestore.instance;
+    userId = user.uid;
 
     return ListView(
       children: <Widget>[
@@ -57,6 +59,41 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
+//              StreamBuilder<DocumentSnapshot>(
+//                stream: firestore
+//                    .collection('Users')
+//                    .document('$userId')
+//                    .snapshots(),
+//                builder: (BuildContext context,
+//                    AsyncSnapshot<DocumentSnapshot> snapshot) {
+//                  print('${snapshot.data['courses']}');
+//                  if (snapshot.hasError) return Text('${snapshot.error}');
+//                  switch (snapshot.connectionState) {
+//                    case ConnectionState.waiting:
+//                      return CircularProgressIndicator();
+//                    default:
+//                      return GridView.builder(
+//                        padding: EdgeInsets.only(
+//                          left: 25,
+//                          top: 10,
+//                          right: 25,
+//                          bottom: 40,
+//                        ),
+//                        itemCount: snapshot.data['courses'].length,
+//                        shrinkWrap: true,
+//                        primary: false,
+//                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                          crossAxisCount: 2,
+//                          crossAxisSpacing: 15,
+//                          mainAxisSpacing: 15,
+//                        ),
+//                        itemBuilder: (BuildContext context, int index) {
+//                          return RecomendedCourseCard(snapshot: snapshot.data['courses']);
+//                        },
+//                      );
+//                  }
+//                },
+//              ),
               StreamBuilder<QuerySnapshot>(
                 stream: firestore.collection('Courses').snapshots(),
                 builder: (BuildContext context,
